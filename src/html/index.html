@@ -1,8 +1,930 @@
-<html>
-    <header></header>
-    <body>
-        <div style="background-color: teal;">
-            <p> Hello World</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CineReviews - Professional Movie Reviews & Articles</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --color-white: #ffffff;
+            --color-gray-50: #f9fafb;
+            --color-gray-100: #f3f4f6;
+            --color-gray-200: #e5e7eb;
+            --color-gray-300: #d1d5db;
+            --color-gray-400: #9ca3af;
+            --color-gray-500: #6b7280;
+            --color-gray-600: #4b5563;
+            --color-gray-700: #374151;
+            --color-gray-800: #1f2937;
+            --color-gray-900: #111827;
+            --color-green-600: #059669;
+            --color-green-700: #047857;
+            --color-yellow-500: #f59e0b;
+            --color-red-500: #ef4444;
+            --color-blue-600: #2563eb;
+            --font-inter: 'Inter', sans-serif;
+            --font-lora: 'Lora', serif;
+        }
+
+        body {
+            font-family: var(--font-inter);
+            background-color: var(--color-white);
+            color: var(--color-gray-900);
+            line-height: 1.6;
+        }
+
+        .font-serif {
+            font-family: var(--font-lora);
+        }
+
+        /* Header Styles */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 50;
+            background-color: var(--color-white);
+            border-bottom: 1px solid var(--color-gray-200);
+            padding: 1rem 0;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-lora);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-gray-900);
+            text-decoration: none;
+        }
+
+        .nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: var(--color-gray-600);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            transition: all 0.2s;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--color-gray-900);
+            background-color: var(--color-gray-100);
+        }
+
+        .btn {
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            border: none;
+            font-weight: 500;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.2s;
+        }
+
+        .btn-primary {
+            background-color: var(--color-green-600);
+            color: var(--color-white);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--color-green-700);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--color-gray-600);
+            border: 1px solid var(--color-gray-300);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--color-gray-50);
+            color: var(--color-gray-900);
+        }
+
+        /* Main Content */
+        .main {
+            margin-top: 5rem;
+            min-height: calc(100vh - 5rem);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .section {
+            padding: 3rem 0;
+            border-bottom: 1px solid var(--color-gray-200);
+        }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 4rem 0;
+        }
+
+        .hero h1 {
+            font-family: var(--font-lora);
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--color-gray-900);
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--color-gray-600);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        /* Grid Layouts */
+        .grid {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .grid-2 {
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+
+        .grid-3 {
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        }
+
+        /* Card Component */
+        .card {
+            background-color: var(--color-white);
+            border: 1px solid var(--color-gray-200);
+            border-radius: 0.75rem;
+            overflow: hidden;
+            transition: all 0.2s;
+        }
+
+        .card:hover {
+            box-shadow: 0 10px 25px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 1.5rem;
+        }
+
+        .card-title {
+            font-family: var(--font-lora);
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--color-gray-900);
+        }
+
+        .card-excerpt {
+            color: var(--color-gray-600);
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .card-meta {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 0.875rem;
+            color: var(--color-gray-500);
+        }
+
+        .card-author {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .avatar {
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        /* Badge Component */
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.25rem 0.75rem;
+            font-size: 0.75rem;
+            font-weight: 500;
+            border-radius: 9999px;
+            background-color: var(--color-gray-100);
+            color: var(--color-gray-700);
+        }
+
+        .badge-featured {
+            background-color: var(--color-yellow-500);
+            color: var(--color-white);
+        }
+
+        /* Rating Component */
+        .rating {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .star {
+            width: 1rem;
+            height: 1rem;
+            fill: var(--color-yellow-500);
+        }
+
+        /* Form Styles */
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--color-gray-700);
+        }
+
+        .form-input,
+        .form-textarea,
+        .form-select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--color-gray-300);
+            border-radius: 0.5rem;
+            background-color: var(--color-gray-50);
+            font-size: 1rem;
+        }
+
+        .form-input:focus,
+        .form-textarea:focus,
+        .form-select:focus {
+            outline: none;
+            border-color: var(--color-green-600);
+            box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.1);
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        /* Tab Component */
+        .tabs {
+            border-bottom: 1px solid var(--color-gray-200);
+            margin-bottom: 2rem;
+        }
+
+        .tab-list {
+            display: flex;
+            gap: 0;
+            overflow-x: auto;
+        }
+
+        .tab-button {
+            padding: 1rem 1.5rem;
+            border: none;
+            background: none;
+            color: var(--color-gray-600);
+            font-weight: 500;
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            white-space: nowrap;
+            transition: all 0.2s;
+        }
+
+        .tab-button:hover {
+            color: var(--color-gray-900);
+        }
+
+        .tab-button.active {
+            color: var(--color-green-600);
+            border-bottom-color: var(--color-green-600);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Utility Classes */
+        .hidden {
+            display: none;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .text-sm {
+            font-size: 0.875rem;
+        }
+
+        .text-lg {
+            font-size: 1.125rem;
+        }
+
+        .text-xl {
+            font-size: 1.25rem;
+        }
+
+        .text-2xl {
+            font-size: 1.5rem;
+        }
+
+        .text-3xl {
+            font-size: 1.875rem;
+        }
+
+        .mb-4 {
+            margin-bottom: 1rem;
+        }
+
+        .mb-6 {
+            margin-bottom: 1.5rem;
+        }
+
+        .mt-8 {
+            margin-top: 2rem;
+        }
+
+        .p-6 {
+            padding: 1.5rem;
+        }
+
+        .flex {
+            display: flex;
+        }
+
+        .items-center {
+            align-items: center;
+        }
+
+        .justify-between {
+            justify-content: space-between;
+        }
+
+        .gap-4 {
+            gap: 1rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .grid-2,
+            .grid-3 {
+                grid-template-columns: 1fr;
+            }
+
+            .tab-list {
+                flex-direction: column;
+            }
+        }
+
+        /* Animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <a href="#" class="logo" onclick="showPage('home')">CineReviews</a>
+            <nav class="nav">
+                <a href="#" class="nav-link" onclick="showPage('home')" data-page="home">Reviews</a>
+                <a href="#" class="nav-link" onclick="showPage('articles')" data-page="articles">Articles</a>
+                <a href="#" class="nav-link" onclick="showPage('movie-night')" data-page="movie-night">Movie Night</a>
+                <a href="#" class="nav-link" onclick="showPage('admin')" data-page="admin">Admin</a>
+                <button class="btn btn-primary" onclick="showAuthModal()">Sign In</button>
+            </nav>
         </div>
-    </body>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <!-- Home Page -->
+        <div id="page-home" class="page active">
+            <!-- Hero Section -->
+            <section class="hero section">
+                <div class="container">
+                    <h1 class="font-serif">Professional Movie Reviews & Cinema Insights</h1>
+                    <p>Discover thoughtful film criticism, in-depth analysis, and the latest cinema news from passionate movie enthusiasts.</p>
+                    <button class="btn btn-primary">Explore Reviews</button>
+                </div>
+            </section>
+
+            <!-- Featured Reviews -->
+            <section class="section">
+                <div class="container">
+                    <h2 class="font-serif text-2xl mb-6">Featured Reviews</h2>
+                    <div class="grid grid-2">
+                        <article class="card">
+                            <img src="https://images.unsplash.com/photo-1572188863110-46d457c9234d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb3ZpZSUyMHBvc3RlcnMlMjB3YWxsfGVufDF8fHx8MTc1OTY1NTcyM3ww&ixlib=rb-4.1.0&q=80&w=1080" alt="Dune: Part Two" class="card-image">
+                            <div class="card-content">
+                                <div class="badge badge-featured mb-4">Featured</div>
+                                <h3 class="card-title">Dune: Part Two - A Cinematic Masterpiece</h3>
+                                <p class="card-excerpt">Denis Villeneuve has achieved something truly remarkable with "Dune: Part Two" – a sequel that not only matches its predecessor but surpasses it in virtually every conceivable way.</p>
+                                <div class="card-meta">
+                                    <div class="card-author">
+                                        <img src="https://images.unsplash.com/photo-1494790108755-2616b612b47c?w=100" alt="Sarah Chen" class="avatar">
+                                        <span>Sarah Chen</span>
+                                    </div>
+                                    <div class="rating">
+                                        <svg class="star" viewBox="0 0 20 20">
+                                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                        </svg>
+                                        <span>9.2</span>
+                                    </div>
+                                    <span>March 15, 2024</span>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="card">
+                            <img src="https://images.unsplash.com/photo-1739891251370-05b62a54697b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxibG9ja2J1c3RlciUyMG1vdmllJTIwcG9zdGVyfGVufDF8fHx8MTc1OTY1NTcyNnww&ixlib=rb-4.1.0&q=80&w=1080" alt="Oppenheimer" class="card-image">
+                            <div class="card-content">
+                                <div class="badge">Biography</div>
+                                <h3 class="card-title">Oppenheimer: Nolan's Historical Triumph</h3>
+                                <p class="card-excerpt">Christopher Nolan delivers a haunting biographical masterpiece that explores the moral complexities of scientific discovery and its devastating consequences.</p>
+                                <div class="card-meta">
+                                    <div class="card-author">
+                                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100" alt="Michael Rodriguez" class="avatar">
+                                        <span>Michael Rodriguez</span>
+                                    </div>
+                                    <div class="rating">
+                                        <svg class="star" viewBox="0 0 20 20">
+                                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                        </svg>
+                                        <span>8.9</span>
+                                    </div>
+                                    <span>March 10, 2024</span>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Latest Reviews -->
+            <section class="section">
+                <div class="container">
+                    <h2 class="font-serif text-2xl mb-6">Latest Reviews</h2>
+                    <div class="grid grid-3">
+                        <article class="card">
+                            <img src="https://images.unsplash.com/photo-1548095115-45697e222a58?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxkYXJrJTIwY2luZW1hJTIwbW92aWUlMjB0aGVhdGVyfGVufDF8fHx8MTc1OTY1NTcyMXww&ixlib=rb-4.1.0&q=80&w=1080" alt="The Batman" class="card-image">
+                            <div class="card-content">
+                                <div class="badge">Action</div>
+                                <h3 class="card-title">The Batman: A Dark Take on Gotham</h3>
+                                <p class="card-excerpt">Matt Reeves crafts a noir-inspired Batman film that explores the detective roots of the character.</p>
+                                <div class="card-meta">
+                                    <div class="card-author">
+                                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100" alt="Emma Thompson" class="avatar">
+                                        <span>Emma Thompson</span>
+                                    </div>
+                                    <div class="rating">
+                                        <svg class="star" viewBox="0 0 20 20">
+                                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                        </svg>
+                                        <span>8.5</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="card">
+                            <img src="https://images.unsplash.com/photo-1572188863110-46d457c9234d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb3ZpZSUyMHBvc3RlcnMlMjB3YWxsfGVufDF8fHx8MTc1OTY1NTcyM3ww&ixlib=rb-4.1.0&q=80&w=1080" alt="Spirited Away" class="card-image">
+                            <div class="card-content">
+                                <div class="badge">Animation</div>
+                                <h3 class="card-title">Spirited Away: Timeless Magic</h3>
+                                <p class="card-excerpt">Miyazaki's masterpiece continues to enchant audiences with its imaginative world and heartfelt storytelling.</p>
+                                <div class="card-meta">
+                                    <div class="card-author">
+                                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100" alt="David Kim" class="avatar">
+                                        <span>David Kim</span>
+                                    </div>
+                                    <div class="rating">
+                                        <svg class="star" viewBox="0 0 20 20">
+                                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                        </svg>
+                                        <span>9.3</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="card">
+                            <img src="https://images.unsplash.com/photo-1739891251370-05b62a54697b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxibG9ja2J1c3RlciUyMG1vdmllJTIwcG9zdGVyfGVufDF8fHx8MTc1OTY1NTcyNnww&ixlib=rb-4.1.0&q=80&w=1080" alt="Inception" class="card-image">
+                            <div class="card-content">
+                                <div class="badge">Sci-Fi</div>
+                                <h3 class="card-title">Inception: Mind-Bending Cinema</h3>
+                                <p class="card-excerpt">Nolan's complex narrative structure creates a unique cinematic experience that rewards multiple viewings.</p>
+                                <div class="card-meta">
+                                    <div class="card-author">
+                                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100" alt="Anna Lee" class="avatar">
+                                        <span>Anna Lee</span>
+                                    </div>
+                                    <div class="rating">
+                                        <svg class="star" viewBox="0 0 20 20">
+                                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                        </svg>
+                                        <span>8.8</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Articles Page -->
+        <div id="page-articles" class="page hidden">
+            <section class="hero section">
+                <div class="container">
+                    <h1 class="font-serif">Cinema Articles</h1>
+                    <p>Explore the world of cinema through in-depth articles, industry insights, and behind-the-scenes stories</p>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="container">
+                    <h2 class="font-serif text-2xl mb-6">Featured Articles</h2>
+                    <div class="grid grid-2">
+                        <article class="card">
+                            <img src="https://images.unsplash.com/photo-1548095115-45697e222a58?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxZXJjaHwxfHxkYXJrJTIwY2luZW1hJTIwbW92aWUlMjB0aGVhdGVyfGVufDF8fHx8MTc1OTY1NTcyMXww&ixlib=rb-4.1.0&q=80&w=1080" alt="Cinematography" class="card-image">
+                            <div class="card-content">
+                                <div class="badge badge-featured mb-4">Featured</div>
+                                <h3 class="card-title">The Evolution of Cinematography in the Digital Age</h3>
+                                <p class="card-excerpt">From film to digital, explore how technology has transformed the art of visual storytelling and what it means for the future of cinema.</p>
+                                <div class="card-meta">
+                                    <div class="card-author">
+                                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100" alt="David Chen" class="avatar">
+                                        <span>David Chen</span>
+                                    </div>
+                                    <span>12 min read</span>
+                                    <span>March 20, 2024</span>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="card">
+                            <img src="https://images.unsplash.com/photo-1572188863110-46d457c9234d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb3ZpZSUyMHBvc3RlcnMlMjB3YWxsfGVufDF8fHx8MTc1OTY1NTcyM3ww&ixlib=rb-4.1.0&q=80&w=1080" alt="Denis Villeneuve" class="card-image">
+                            <div class="card-content">
+                                <div class="badge">Directors</div>
+                                <h3 class="card-title">Denis Villeneuve: Master of Modern Sci-Fi</h3>
+                                <p class="card-excerpt">A deep dive into the directorial genius behind Arrival, Blade Runner 2049, and the Dune saga, exploring his unique visual language.</p>
+                                <div class="card-meta">
+                                    <div class="card-author">
+                                        <img src="https://images.unsplash.com/photo-1494790108755-2616b612b47c?w=100" alt="Sarah Martinez" class="avatar">
+                                        <span>Sarah Martinez</span>
+                                    </div>
+                                    <span>15 min read</span>
+                                    <span>March 18, 2024</span>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Movie Night Page -->
+        <div id="page-movie-night" class="page hidden">
+            <section class="hero section">
+                <div class="container">
+                    <h1 class="font-serif">Movie Night Events</h1>
+                    <p>Join fellow movie enthusiasts for exclusive screenings, discussions, and unforgettable cinematic experiences</p>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="container">
+                    <h2 class="font-serif text-2xl mb-6">Featured Events</h2>
+                    <div class="grid grid-2">
+                        <article class="card">
+                            <img src="https://images.unsplash.com/photo-1572188863110-46d457c9234d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb3ZpZSUyMHBvc3RlcnMlMjB3YWxsfGVufDF8fHx8MTc1OTY1NTcyM3ww&ixlib=rb-4.1.0&q=80&w=1080" alt="Dune: Part Two" class="card-image">
+                            <div class="card-content">
+                                <div class="badge badge-featured mb-4">Featured</div>
+                                <h3 class="card-title">Dune: Part Two - IMAX Experience</h3>
+                                <p class="card-excerpt">Experience Denis Villeneuve's epic sequel in stunning IMAX format. Join fellow sci-fi enthusiasts for an unforgettable cinematic journey.</p>
+                                <div class="card-meta">
+                                    <span>April 15, 2024 • 7:30 PM</span>
+                                    <span>Grand Cinema IMAX</span>
+                                    <span>$25</span>
+                                </div>
+                                <button class="btn btn-primary mt-8">Register Now</button>
+                            </div>
+                        </article>
+
+                        <article class="card">
+                            <img src="https://images.unsplash.com/photo-1739891251370-05b62a54697b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxibG9ja2J1c3RlciUyMG1vdmllJTIwcG9zdGVyfGVufDF8fHx8MTc1OTY1NTcyNnww&ixlib=rb-4.1.0&q=80&w=1080" alt="Classic Horror" class="card-image">
+                            <div class="card-content">
+                                <div class="badge">Horror</div>
+                                <h3 class="card-title">Classic Horror Night: The Exorcist</h3>
+                                <p class="card-excerpt">Relive the terror of William Friedkin's masterpiece on the big screen. This classic horror experience includes pre-show discussions.</p>
+                                <div class="card-meta">
+                                    <span>April 22, 2024 • 9:00 PM</span>
+                                    <span>Retro Cinema</span>
+                                    <span>$15</span>
+                                </div>
+                                <button class="btn btn-primary mt-8">Register Now</button>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Admin Page -->
+        <div id="page-admin" class="page hidden">
+            <section class="hero section">
+                <div class="container">
+                    <h1 class="font-serif">Admin Dashboard</h1>
+                    <p>Manage your movie review platform</p>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="container">
+                    <div class="tabs">
+                        <div class="tab-list">
+                            <button class="tab-button active" onclick="showTab('overview')">Overview</button>
+                            <button class="tab-button" onclick="showTab('create-article')">Write Article</button>
+                            <button class="tab-button" onclick="showTab('create-review')">Write Review</button>
+                            <button class="tab-button" onclick="showTab('create-event')">Create Event</button>
+                            <button class="tab-button" onclick="showTab('manage')">Manage</button>
+                        </div>
+                    </div>
+
+                    <!-- Overview Tab -->
+                    <div id="tab-overview" class="tab-content active">
+                        <div class="grid grid-3">
+                            <div class="card p-6">
+                                <h3 class="text-2xl font-serif mb-4">12,450</h3>
+                                <p class="text-sm text-gray-600">Total Users</p>
+                            </div>
+                            <div class="card p-6">
+                                <h3 class="text-2xl font-serif mb-4">342</h3>
+                                <p class="text-sm text-gray-600">Total Reviews</p>
+                            </div>
+                            <div class="card p-6">
+                                <h3 class="text-2xl font-serif mb-4">89,234</h3>
+                                <p class="text-sm text-gray-600">Monthly Views</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Create Article Tab -->
+                    <div id="tab-create-article" class="tab-content hidden">
+                        <div class="card p-6">
+                            <h3 class="text-xl font-serif mb-6">Write New Article</h3>
+                            <form>
+                                <div class="form-group">
+                                    <label class="form-label">Article Title</label>
+                                    <input type="text" class="form-input" placeholder="Enter article title">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Category</label>
+                                    <select class="form-select">
+                                        <option>Technology</option>
+                                        <option>Directors</option>
+                                        <option>Genres</option>
+                                        <option>Industry</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Content</label>
+                                    <textarea class="form-textarea" rows="10" placeholder="Write your article content here..."></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Publish Article</button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Create Review Tab -->
+                    <div id="tab-create-review" class="tab-content hidden">
+                        <div class="card p-6">
+                            <h3 class="text-xl font-serif mb-6">Write New Review</h3>
+                            <form>
+                                <div class="form-group">
+                                    <label class="form-label">Review Title</label>
+                                    <input type="text" class="form-input" placeholder="Enter review title">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Movie Title</label>
+                                    <input type="text" class="form-input" placeholder="Enter movie title">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Director</label>
+                                    <input type="text" class="form-input" placeholder="Director name">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Review Content</label>
+                                    <textarea class="form-textarea" rows="10" placeholder="Write your detailed review here..."></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Publish Review</button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Create Event Tab -->
+                    <div id="tab-create-event" class="tab-content hidden">
+                        <div class="card p-6">
+                            <h3 class="text-xl font-serif mb-6">Create Movie Night Event</h3>
+                            <form>
+                                <div class="form-group">
+                                    <label class="form-label">Event Title</label>
+                                    <input type="text" class="form-input" placeholder="Enter event title">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Movie</label>
+                                    <input type="text" class="form-input" placeholder="Movie title">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Venue</label>
+                                    <input type="text" class="form-input" placeholder="Theater name">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Description</label>
+                                    <textarea class="form-textarea" rows="4" placeholder="Describe the event..."></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Create Event</button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Manage Tab -->
+                    <div id="tab-manage" class="tab-content hidden">
+                        <div class="card p-6">
+                            <h3 class="text-xl font-serif mb-6">Content Management</h3>
+                            <p class="text-gray-600">Manage existing articles, reviews, and events from this section.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Auth Modal -->
+    <div id="auth-modal" class="hidden" style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.5); z-index: 100; display: flex; align-items: center; justify-content: center;">
+        <div class="card" style="max-width: 400px; width: 90%; margin: 2rem;">
+            <div class="p-6">
+                <h3 class="text-xl font-serif mb-6">Sign In</h3>
+                <form>
+                    <div class="form-group">
+                        <label class="form-label">Email</label>
+                        <input type="email" class="form-input" placeholder="Enter your email">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Password</label>
+                        <input type="password" class="form-input" placeholder="Enter your password">
+                    </div>
+                    <div class="flex gap-4">
+                        <button type="submit" class="btn btn-primary">Sign In</button>
+                        <button type="button" class="btn btn-outline" onclick="hideAuthModal()">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Page Navigation
+        function showPage(pageId) {
+            // Hide all pages
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => {
+                page.classList.add('hidden');
+                page.classList.remove('active');
+            });
+
+            // Show selected page
+            const targetPage = document.getElementById(`page-${pageId}`);
+            if (targetPage) {
+                targetPage.classList.remove('hidden');
+                targetPage.classList.add('active', 'fade-in');
+            }
+
+            // Update navigation
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.dataset.page === pageId) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        // Tab Navigation
+        function showTab(tabId) {
+            // Hide all tab contents
+            const tabContents = document.querySelectorAll('.tab-content');
+            tabContents.forEach(content => {
+                content.classList.add('hidden');
+                content.classList.remove('active');
+            });
+
+            // Show selected tab content
+            const targetTab = document.getElementById(`tab-${tabId}`);
+            if (targetTab) {
+                targetTab.classList.remove('hidden');
+                targetTab.classList.add('active');
+            }
+
+            // Update tab buttons
+            const tabButtons = document.querySelectorAll('.tab-button');
+            tabButtons.forEach(button => {
+                button.classList.remove('active');
+            });
+            event.target.classList.add('active');
+        }
+
+        // Auth Modal
+        function showAuthModal() {
+            document.getElementById('auth-modal').classList.remove('hidden');
+        }
+
+        function hideAuthModal() {
+            document.getElementById('auth-modal').classList.add('hidden');
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            showPage('home');
+        });
+
+        // Close modal when clicking outside
+        document.getElementById('auth-modal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                hideAuthModal();
+            }
+        });
+    </script>
+</body>
 </html>
