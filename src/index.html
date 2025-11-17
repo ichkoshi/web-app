@@ -25,8 +25,8 @@
             --color-gray-700: #374151;
             --color-gray-800: #1f2937;
             --color-gray-900: #111827;
-            --color-green-600: #059669;
-            --color-green-700: #047857;
+            --color-green-600: #f59e0b;
+            --color-green-700: #ffc800;
             --color-yellow-500: #f59e0b;
             --color-red-500: #ef4444;
             --color-blue-600: #2563eb;
@@ -410,7 +410,6 @@
             gap: 1rem;
         }
 
-        /* Responsive Design */
         @media (max-width: 768px) {
             .nav {
                 display: none;
@@ -434,7 +433,6 @@
             }
         }
 
-        /* Animation */
         @keyframes fadeIn {
             from {
                 opacity: 0;
@@ -455,34 +453,34 @@
     <!-- Header -->
     <header class="header">
         <div class="header-container">
-            <a href="#" class="logo" onclick="showPage('home')">CineReviews</a>
+            <a href="#" class="logo" onclick="showPage('home')">Artfilm</a>
             <nav class="nav">
-                <a href="#" class="nav-link" onclick="showPage('home')" data-page="home">Reviews</a>
-                <a href="#" class="nav-link" onclick="showPage('articles')" data-page="articles">Articles</a>
+                <a href="#" class="nav-link" onclick="showPage('home')" data-page="home">Кино шүүмж</a>
+                <a href="#" class="nav-link" onclick="showPage('articles')" data-page="articles">Нийтлэл</a>
                 <a href="#" class="nav-link" onclick="showPage('movie-night')" data-page="movie-night">Movie Night</a>
-                <a href="#" class="nav-link" onclick="showPage('admin')" data-page="admin">Admin</a>
-                <button class="btn btn-primary" onclick="showAuthModal()">Sign In</button>
+                
+                <button class="btn btn-primary" onclick="showAuthModal()">Нэвтрэх</button>
             </nav>
         </div>
     </header>
 
-    <!-- Main Content -->
+ 
     <main class="main">
         <!-- Home Page -->
         <div id="page-home" class="page active">
-            <!-- Hero Section -->
+          
             <section class="hero section">
                 <div class="container">
-                    <h1 class="font-serif">Professional Movie Reviews & Cinema Insights</h1>
-                    <p>Discover thoughtful film criticism, in-depth analysis, and the latest cinema news from passionate movie enthusiasts.</p>
-                    <button class="btn btn-primary">Explore Reviews</button>
+                    <h1 class="font-serif">Кино сонирхогчдын нэгдсэн орчин</h1>
+                    <p>Бид кино судлаачид, жирийн үзэгчид болон сонирхогчдын шүүмжүүдийг нэгтгэн хүргэдэг. Шинэ нээлтүүд, классик бүтээл, нэрт найруулагчдын онцлох кинонууд — бүгд энд.</p>
+                    <button class="btn btn-primary">Бүгдийг харах</button>
                 </div>
             </section>
 
-            <!-- Featured Reviews -->
+           
             <section class="section">
                 <div class="container">
-                    <h2 class="font-serif text-2xl mb-6">Featured Reviews</h2>
+                    <h2 class="font-serif text-2xl mb-6">Сүүлд нэмэгдсэн</h2>
                     <div class="grid grid-2">
                         <article class="card">
                             <img src="https://images.unsplash.com/photo-1572188863110-46d457c9234d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb3ZpZSUyMHBvc3RlcnMlMjB3YWxsfGVufDF8fHx8MTc1OTY1NTcyM3ww&ixlib=rb-4.1.0&q=80&w=1080" alt="Dune: Part Two" class="card-image">
@@ -493,7 +491,7 @@
                                 <div class="card-meta">
                                     <div class="card-author">
                                         <img src="https://images.unsplash.com/photo-1494790108755-2616b612b47c?w=100" alt="Sarah Chen" class="avatar">
-                                        <span>Sarah Chen</span>
+                                        <span>ichkoshi</span>
                                     </div>
                                     <div class="rating">
                                         <svg class="star" viewBox="0 0 20 20">
@@ -514,8 +512,8 @@
                                 <p class="card-excerpt">Christopher Nolan delivers a haunting biographical masterpiece that explores the moral complexities of scientific discovery and its devastating consequences.</p>
                                 <div class="card-meta">
                                     <div class="card-author">
-                                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100" alt="Michael Rodriguez" class="avatar">
-                                        <span>Michael Rodriguez</span>
+                                        <img src="https://images.unsplash.com/photo-1494790108755-2616b612b47c?w=100" alt="Michael Rodriguez" class="avatar">
+                                        <span>ichkoshi</span>
                                     </div>
                                     <div class="rating">
                                         <svg class="star" viewBox="0 0 20 20">
@@ -531,21 +529,21 @@
                 </div>
             </section>
 
-            <!-- Latest Reviews -->
+           
             <section class="section">
                 <div class="container">
-                    <h2 class="font-serif text-2xl mb-6">Latest Reviews</h2>
+                    <h2 class="font-serif text-2xl mb-6">Кино шүүмжүүд</h2>
                     <div class="grid grid-3">
                         <article class="card">
                             <img src="https://images.unsplash.com/photo-1548095115-45697e222a58?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxkYXJrJTIwY2luZW1hJTIwbW92aWUlMjB0aGVhdGVyfGVufDF8fHx8MTc1OTY1NTcyMXww&ixlib=rb-4.1.0&q=80&w=1080" alt="The Batman" class="card-image">
                             <div class="card-content">
                                 <div class="badge">Action</div>
-                                <h3 class="card-title">The Batman: A Dark Take on Gotham</h3>
+                                <h3 class="card-title">Old boy (2000)</h3>
                                 <p class="card-excerpt">Matt Reeves crafts a noir-inspired Batman film that explores the detective roots of the character.</p>
                                 <div class="card-meta">
                                     <div class="card-author">
-                                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100" alt="Emma Thompson" class="avatar">
-                                        <span>Emma Thompson</span>
+                                        <img src="https://images.unsplash.com/photo-1494790108755-2616b612b47c?w=100" alt="Emma Thompson" class="avatar">
+                                        <span>ichkoshi</span>
                                     </div>
                                     <div class="rating">
                                         <svg class="star" viewBox="0 0 20 20">
@@ -561,12 +559,12 @@
                             <img src="https://images.unsplash.com/photo-1572188863110-46d457c9234d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb3ZpZSUyMHBvc3RlcnMlMjB3YWxsfGVufDF8fHx8MTc1OTY1NTcyM3ww&ixlib=rb-4.1.0&q=80&w=1080" alt="Spirited Away" class="card-image">
                             <div class="card-content">
                                 <div class="badge">Animation</div>
-                                <h3 class="card-title">Spirited Away: Timeless Magic</h3>
+                                <h3 class="card-title">Old boy (2000)</h3>
                                 <p class="card-excerpt">Miyazaki's masterpiece continues to enchant audiences with its imaginative world and heartfelt storytelling.</p>
                                 <div class="card-meta">
                                     <div class="card-author">
-                                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100" alt="David Kim" class="avatar">
-                                        <span>David Kim</span>
+                                        <img src="https://images.unsplash.com/photo-1494790108755-2616b612b47c?w=100" alt="David Kim" class="avatar">
+                                        <span>ichkoshi</span>
                                     </div>
                                     <div class="rating">
                                         <svg class="star" viewBox="0 0 20 20">
@@ -582,12 +580,12 @@
                             <img src="https://images.unsplash.com/photo-1739891251370-05b62a54697b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxibG9ja2J1c3RlciUyMG1vdmllJTIwcG9zdGVyfGVufDF8fHx8MTc1OTY1NTcyNnww&ixlib=rb-4.1.0&q=80&w=1080" alt="Inception" class="card-image">
                             <div class="card-content">
                                 <div class="badge">Sci-Fi</div>
-                                <h3 class="card-title">Inception: Mind-Bending Cinema</h3>
+                                <h3 class="card-title">Old boy (2000)</h3>
                                 <p class="card-excerpt">Nolan's complex narrative structure creates a unique cinematic experience that rewards multiple viewings.</p>
                                 <div class="card-meta">
                                     <div class="card-author">
-                                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100" alt="Anna Lee" class="avatar">
-                                        <span>Anna Lee</span>
+                                        <img src="https://images.unsplash.com/photo-1494790108755-2616b612b47c?w=100" alt="Anna Lee" class="avatar">
+                                        <span>ichkoshi</span>
                                     </div>
                                     <div class="rating">
                                         <svg class="star" viewBox="0 0 20 20">
@@ -607,25 +605,25 @@
         <div id="page-articles" class="page hidden">
             <section class="hero section">
                 <div class="container">
-                    <h1 class="font-serif">Cinema Articles</h1>
+                    <h1 class="font-serif">Нийтлэл</h1>
                     <p>Explore the world of cinema through in-depth articles, industry insights, and behind-the-scenes stories</p>
                 </div>
             </section>
 
             <section class="section">
                 <div class="container">
-                    <h2 class="font-serif text-2xl mb-6">Featured Articles</h2>
+                    <h2 class="font-serif text-2xl mb-6">Бүх нийтлэл</h2>
                     <div class="grid grid-2">
                         <article class="card">
                             <img src="https://images.unsplash.com/photo-1548095115-45697e222a58?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxZXJjaHwxfHxkYXJrJTIwY2luZW1hJTIwbW92aWUlMjB0aGVhdGVyfGVufDF8fHx8MTc1OTY1NTcyMXww&ixlib=rb-4.1.0&q=80&w=1080" alt="Cinematography" class="card-image">
                             <div class="card-content">
                                 <div class="badge badge-featured mb-4">Featured</div>
-                                <h3 class="card-title">The Evolution of Cinematography in the Digital Age</h3>
+                                <h3 class="card-title">Болдоогийн санал болгох 15 кино</h3>
                                 <p class="card-excerpt">From film to digital, explore how technology has transformed the art of visual storytelling and what it means for the future of cinema.</p>
                                 <div class="card-meta">
                                     <div class="card-author">
                                         <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100" alt="David Chen" class="avatar">
-                                        <span>David Chen</span>
+                                        <span>ichkoshi</span>
                                     </div>
                                     <span>12 min read</span>
                                     <span>March 20, 2024</span>
@@ -637,12 +635,12 @@
                             <img src="https://images.unsplash.com/photo-1572188863110-46d457c9234d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb3ZpZSUyMHBvc3RlcnMlMjB3YWxsfGVufDF8fHx8MTc1OTY1NTcyM3ww&ixlib=rb-4.1.0&q=80&w=1080" alt="Denis Villeneuve" class="card-image">
                             <div class="card-content">
                                 <div class="badge">Directors</div>
-                                <h3 class="card-title">Denis Villeneuve: Master of Modern Sci-Fi</h3>
+                                <h3 class="card-title">Шведийн кино наадам энэ сард болно</h3>
                                 <p class="card-excerpt">A deep dive into the directorial genius behind Arrival, Blade Runner 2049, and the Dune saga, exploring his unique visual language.</p>
                                 <div class="card-meta">
                                     <div class="card-author">
                                         <img src="https://images.unsplash.com/photo-1494790108755-2616b612b47c?w=100" alt="Sarah Martinez" class="avatar">
-                                        <span>Sarah Martinez</span>
+                                        <span>ichkoshi</span>
                                     </div>
                                     <span>15 min read</span>
                                     <span>March 18, 2024</span>
@@ -659,7 +657,7 @@
             <section class="hero section">
                 <div class="container">
                     <h1 class="font-serif">Movie Night Events</h1>
-                    <p>Join fellow movie enthusiasts for exclusive screenings, discussions, and unforgettable cinematic experiences</p>
+                    <p>Description</p>
                 </div>
             </section>
 
@@ -671,29 +669,29 @@
                             <img src="https://images.unsplash.com/photo-1572188863110-46d457c9234d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb3ZpZSUyMHBvc3RlcnMlMjB3YWxsfGVufDF8fHx8MTc1OTY1NTcyM3ww&ixlib=rb-4.1.0&q=80&w=1080" alt="Dune: Part Two" class="card-image">
                             <div class="card-content">
                                 <div class="badge badge-featured mb-4">Featured</div>
-                                <h3 class="card-title">Dune: Part Two - IMAX Experience</h3>
+                                <h3 class="card-title">Тэг цэг</h3>
                                 <p class="card-excerpt">Experience Denis Villeneuve's epic sequel in stunning IMAX format. Join fellow sci-fi enthusiasts for an unforgettable cinematic journey.</p>
                                 <div class="card-meta">
-                                    <span>April 15, 2024 • 7:30 PM</span>
-                                    <span>Grand Cinema IMAX</span>
-                                    <span>$25</span>
+                                    <span>April 15, 2025 • 7:30 PM</span>
+                                    <span>Urgoo Cinema IMAX</span>
+                                    <span>₮25000</span>
                                 </div>
-                                <button class="btn btn-primary mt-8">Register Now</button>
+                                <button class="btn btn-primary mt-8">Бүртгүүлэх</button>
                             </div>
                         </article>
 
                         <article class="card">
                             <img src="https://images.unsplash.com/photo-1739891251370-05b62a54697b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxibG9ja2J1c3RlciUyMG1vdmllJTIwcG9zdGVyfGVufDF8fHx8MTc1OTY1NTcyNnww&ixlib=rb-4.1.0&q=80&w=1080" alt="Classic Horror" class="card-image">
                             <div class="card-content">
-                                <div class="badge">Horror</div>
-                                <h3 class="card-title">Classic Horror Night: The Exorcist</h3>
+                                <div class="badge">Drama</div>
+                                <h3 class="card-title">Баавгай болохсон</h3>
                                 <p class="card-excerpt">Relive the terror of William Friedkin's masterpiece on the big screen. This classic horror experience includes pre-show discussions.</p>
                                 <div class="card-meta">
-                                    <span>April 22, 2024 • 9:00 PM</span>
-                                    <span>Retro Cinema</span>
-                                    <span>$15</span>
+                                    <span>April 15, 2025 • 7:30 PM</span>
+                                    <span>Urgoo Cinema IMAX</span>
+                                    <span>₮25000</span>
                                 </div>
-                                <button class="btn btn-primary mt-8">Register Now</button>
+                                <button class="btn btn-primary mt-8">Бүртгүүлэх</button>
                             </div>
                         </article>
                     </div>
@@ -701,7 +699,7 @@
             </section>
         </div>
 
-        <!-- Admin Page -->
+       <!-- 
         <div id="page-admin" class="page hidden">
             <section class="hero section">
                 <div class="container">
@@ -722,7 +720,7 @@
                         </div>
                     </div>
 
-                    <!-- Overview Tab -->
+                   
                     <div id="tab-overview" class="tab-content active">
                         <div class="grid grid-3">
                             <div class="card p-6">
@@ -739,8 +737,7 @@
                             </div>
                         </div>
                     </div>
-
-                    <!-- Create Article Tab -->
+ 
                     <div id="tab-create-article" class="tab-content hidden">
                         <div class="card p-6">
                             <h3 class="text-xl font-serif mb-6">Write New Article</h3>
@@ -767,7 +764,7 @@
                         </div>
                     </div>
 
-                    <!-- Create Review Tab -->
+                    
                     <div id="tab-create-review" class="tab-content hidden">
                         <div class="card p-6">
                             <h3 class="text-xl font-serif mb-6">Write New Review</h3>
@@ -793,7 +790,7 @@
                         </div>
                     </div>
 
-                    <!-- Create Event Tab -->
+                   
                     <div id="tab-create-event" class="tab-content hidden">
                         <div class="card p-6">
                             <h3 class="text-xl font-serif mb-6">Create Movie Night Event</h3>
@@ -819,7 +816,7 @@
                         </div>
                     </div>
 
-                    <!-- Manage Tab -->
+                    -->
                     <div id="tab-manage" class="tab-content hidden">
                         <div class="card p-6">
                             <h3 class="text-xl font-serif mb-6">Content Management</h3>
@@ -831,31 +828,10 @@
         </div>
     </main>
 
-    <!-- Auth Modal -->
-    <!-- <div id="auth-modal" class="hidden" style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.5); z-index: 100; display: flex; align-items: center; justify-content: center;">
-        <div class="card" style="max-width: 400px; width: 90%; margin: 2rem;">
-            <div class="p-6">
-                <h3 class="text-xl font-serif mb-6">Sign In</h3>
-                <form>
-                    <div class="form-group">
-                        <label class="form-label">Email</label>
-                        <input type="email" class="form-input" placeholder="Enter your email">
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">Password</label>
-                        <input type="password" class="form-input" placeholder="Enter your password">
-                    </div>
-                    <div class="flex gap-4">
-                        <button type="submit" class="btn btn-primary">Sign In</button>
-                        <button type="button" class="btn btn-outline" onclick="hideAuthModal()">Cancel</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div> -->
+    
 
     <script>
-        // Page Navigation
+        
         function showPage(pageId) {
             // Hide all pages
             const pages = document.querySelectorAll('.page');
